@@ -1,6 +1,6 @@
 <template>
   <div>
-    <svg id="chart" width="100%" height="400px"></svg>
+    <svg id="chart" width="100%" height="300px"></svg>
     <div class="example-scoped">This is styled from scoped styles.</div>
   </div>
 </template>
