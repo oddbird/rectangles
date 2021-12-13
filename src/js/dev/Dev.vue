@@ -15,7 +15,7 @@
 
 <script>
 import { groupBy, last } from "lodash";
-import App from "@/App";
+import App from "@/js/App";
 import sampleData from "./examples/rect_sample.json";
 
 const examples = groupBy(sampleData, "ticker");

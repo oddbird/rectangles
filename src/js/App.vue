@@ -2,12 +2,11 @@
   <div id="app">
     <Chart v-if="inputData" :input-data="inputData" />
     <span v-else>Please select a ticker.</span>
-    <div class="example-global">This is styled from a global stylesheet.</div>
   </div>
 </template>
 
 <script>
-import Chart from "@/components/Chart";
+import Chart from "@/js/components/Chart";
 
 export default {
   name: "App",
@@ -25,6 +24,6 @@ export default {
 
 <style lang="scss">
 #app {
-  @import "sass/app.scss";
+  @import "../sass/app";
 }
 </style>
