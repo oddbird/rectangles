@@ -1,5 +1,5 @@
 <template>
-  <svg id="chart" width="100%" height="400px">
+  <svg id="chart" width="100%" height="500px">
     <g>
       <rect
         class="income"
