@@ -1,6 +1,6 @@
 <template>
   <div>
-    <svg id="chart" width="100%" height="500px">
+    <svg id="chart" width="100%" height="625px">
       <g>
         <rect
           class="income"
@@ -51,8 +51,8 @@
       <thead>
         <tr>
           <th scope="col"></th>
-          <th scope="col">@@@</th>
-          <th scope="col">@@@</th>
+          <th scope="col">{{ period_y1 }}</th>
+          <th scope="col">{{ period }}</th>
         </tr>
       </thead>
       <tbody>
@@ -68,24 +68,8 @@
         </tr>
         <tr>
           <td>Operating Income</td>
-          <td>
-            {{
-              formatUSD(
-                inputData.total_revenue_y1 -
-                  inputData.total_cost_of_revenue_y1 -
-                  inputData.total_operating_expenses_y1
-              )
-            }}
-          </td>
-          <td>
-            {{
-              formatUSD(
-                inputData.total_revenue -
-                  inputData.total_cost_of_revenue -
-                  inputData.total_operating_expenses
-              )
-            }}
-          </td>
+          <td>{{ formatUSD(inputData.operating_income_loss_y1) }}</td>
+          <td>{{ formatUSD(inputData.operating_income_loss) }}</td>
         </tr>
       </tbody>
     </table>
@@ -104,6 +88,15 @@ export default {
     },
   },
   computed: {
+    period() {
+      const str = this.inputData.period_id.toString();
+      return `${str.substring(0, 4)} Q${str.slice(-1)}`;
+    },
+    period_y1() {
+      const str = this.inputData.period_id.toString();
+      const year = (parseInt(str.substring(0, 4), 10) - 1).toString();
+      return `${year} Q${str.slice(-1)}`;
+    },
     X0() {
       return 10;
     },
@@ -111,10 +104,10 @@ export default {
       return 10;
     },
     WIDTH() {
-      return 300;
+      return 400;
     },
     HEIGHT() {
-      return 200;
+      return 300;
     },
     rev_delta() {
       return this.inputData.total_revenue - this.inputData.total_revenue_y1;
