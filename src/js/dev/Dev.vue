@@ -14,21 +14,21 @@
 </template>
 
 <script>
-import { groupBy, last } from "lodash";
-import App from "@/js/App";
-import sampleData from "./examples/rect_sample.json";
+import { groupBy, last } from 'lodash';
+import App from '@/js/App';
+import sampleData from './examples/rect_sample.json';
 
-const examples = groupBy(sampleData, "ticker");
+const examples = groupBy(sampleData, 'ticker');
 
 export default {
-  name: "DevApp",
+  name: 'DevApp',
   components: {
     App,
   },
   data() {
     return {
       examples,
-      selectedTicker: "",
+      selectedTicker: '',
       selectedData: null,
     };
   },

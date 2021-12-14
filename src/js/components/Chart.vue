@@ -1,44 +1,52 @@
 <template>
   <div class="chart-container">
-    <svg id="chart" width="100%" height="625px">
+    <svg id="chart" width="100%" height="300px">
       <g>
         <rect
-          class="income"
+          class="cogs"
           :x="X0"
-          :y="Y0 + h_cogs_0 + h_sga_0"
+          :y="Y0"
           :width="WIDTH"
-          :height="HEIGHT - (h_cogs_0 + h_sga_0)"
+          :height="h_cogs_0 * scale"
         />
         <rect
           class="sga"
           :x="X0"
-          :y="Y0 + h_cogs_0"
+          :y="Y0 + h_cogs_0 * scale"
           :width="WIDTH"
-          :height="h_sga_0"
+          :height="h_sga_0 * scale"
         />
-        <rect class="cogs" :x="X0" :y="Y0" :width="WIDTH" :height="h_cogs_0" />
+        <rect
+          v-if="HEIGHT > expenses_0"
+          class="income"
+          :x="X0"
+          :y="Y0 + expenses_0 * scale"
+          :width="WIDTH"
+          :height="(HEIGHT - expenses_0) * scale"
+        />
       </g>
       <g>
-        <rect
-          class="income"
-          :x="X0 + WIDTH"
-          :y="Y0 + h_cogs_delta + h_sga_delta"
-          :width="WIDTH * W_delta"
-          :height="HEIGHT - (h_cogs_delta + h_sga_delta)"
-        />
-        <rect
-          class="sga"
-          :x="X0 + WIDTH"
-          :y="Y0 + h_cogs_delta"
-          :width="WIDTH * W_delta"
-          :height="h_sga_delta"
-        />
         <rect
           class="cogs"
           :x="X0 + WIDTH"
           :y="Y0"
-          :width="WIDTH * W_delta"
-          :height="h_cogs_delta"
+          :width="WIDTH * w_delta"
+          :height="h_cogs_delta * scale"
+        />
+        <rect
+          class="sga"
+          :x="X0 + WIDTH"
+          :y="Y0 + h_cogs_delta * scale"
+          :width="WIDTH * w_delta"
+          :height="h_sga_delta * scale"
+        />
+        <rect
+          v-if="HEIGHT > expenses_delta"
+          class="income"
+          :x="X0 + WIDTH"
+          :y="Y0 + expenses_delta * scale"
+          :width="WIDTH * w_delta"
+          :height="(HEIGHT - expenses_delta) * scale"
         />
       </g>
     </svg>
@@ -110,10 +118,10 @@ export default {
       return `${year} Q${str.slice(-1)}`;
     },
     X0() {
-      return 10;
+      return 0;
     },
     Y0() {
-      return 10;
+      return 0;
     },
     WIDTH() {
       return 400;
@@ -166,8 +174,20 @@ export default {
     h_sga_delta() {
       return this.HEIGHT * this.sga_pct_delta;
     },
-    W_delta() {
+    w_delta() {
       return this.inputData.total_revenue / this.inputData.total_revenue_y1 - 1;
+    },
+    expenses_0() {
+      return this.h_cogs_0 + this.h_sga_0;
+    },
+    expenses_delta() {
+      return this.h_cogs_delta + this.h_sga_delta;
+    },
+    scale() {
+      return (
+        this.HEIGHT /
+        Math.max(this.expenses_0, this.expenses_delta, this.HEIGHT)
+      );
     },
   },
   methods: {
@@ -182,6 +202,7 @@ export default {
 .chart-container {
   display: grid;
 }
+
 rect {
   stroke: var(--rect-stroke);
   stroke-width: 2px;
@@ -220,11 +241,13 @@ rect {
     padding-right: 1rem;
   }
 }
+
 thead {
   background: var(--table-background-color);
   font-size: 1.25rem;
   opacity: 1;
 }
+
 tbody {
   font-size: 1rem;
 }

@@ -1,9 +1,9 @@
-import { isNaN, isNull } from "lodash";
+import { isNaN, isNull } from 'lodash';
 
-const USDFormatter = new Intl.NumberFormat("en-US", {
-  style: "currency",
-  currency: "USD",
-  maximumFractionDigits: 0
+const USDFormatter = new Intl.NumberFormat('en-US', {
+  style: 'currency',
+  currency: 'USD',
+  maximumFractionDigits: 0,
 });
 
 export const formatCurrency = (input) => {
