@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <Chart v-if="inputData" :input-data="inputData" />
-    <span v-else>Please select a ticker.</span>
+    <Chart v-for="(val, idx) in inputData" :key="idx" :input-data="val" />
+    <span v-if="!inputData.length">Please select a company and period.</span>
   </div>
 </template>
 
@@ -15,8 +15,8 @@ export default {
   },
   props: {
     inputData: {
-      type: Object,
-      default: null,
+      type: Array,
+      default: () => [],
     },
   },
 };

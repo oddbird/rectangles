@@ -1,24 +1,29 @@
 <template>
   <div id="dev-app">
     <form data-form>
-      <label for="sample-data">Select Ticker</label>
-      <select id="sample-data" v-model="selectedTicker">
-        <option value="">---</option>
-        <option v-for="(val, key) in examples" :key="key" :value="key">
-          {{ key }}
-        </option>
+      <label for="sample-data">Select Period</label>
+      <select id="sample-data" multiple v-model="selectedTicker">
+        <optgroup v-for="(val, key) in groupedData" :key="key" :label="key">
+          <option
+            v-for="(period, idx) in val"
+            :key="idx"
+            :value="`${period.ticker}-${period.period_id}`"
+          >
+            {{ period.period_id }}
+          </option>
+        </optgroup>
       </select>
     </form>
-    <App key="selectedTicker" :input-data="selectedData" />
+    <App :key="selectedTicker.join()" :input-data="selectedData" />
   </div>
 </template>
 
 <script>
-import { groupBy, last } from 'lodash';
+import { compact, find, groupBy } from 'lodash';
 import App from '@/js/App';
 import sampleData from './examples/rect_sample.json';
 
-const examples = groupBy(sampleData, 'ticker');
+const groupedData = groupBy(sampleData, 'ticker');
 
 export default {
   name: 'DevApp',
@@ -27,14 +32,19 @@ export default {
   },
   data() {
     return {
-      examples,
-      selectedTicker: '',
-      selectedData: null,
+      groupedData,
+      selectedTicker: [],
+      selectedData: [],
     };
   },
   watch: {
-    selectedTicker(key) {
-      this.selectedData = last(examples[key] || []) || null;
+    selectedTicker(ids) {
+      this.selectedData = compact(
+        ids.map((id) => {
+          const [ticker, period] = id.split('-');
+          return find(groupedData[ticker], { period_id: parseInt(period, 10) });
+        }),
+      );
     },
   },
 };
