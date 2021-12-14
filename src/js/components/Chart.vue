@@ -1,6 +1,6 @@
 <template>
   <div class="chart-container">
-    <svg id="chart" width="100%" height="300px">
+    <svg id="chart" width="100%" height="310px">
       <g>
         <rect
           class="cogs"
@@ -16,16 +16,26 @@
           :width="WIDTH"
           :height="h_sga_0 * scale"
         />
-        <rect
-          v-if="HEIGHT > expenses_0"
-          class="income"
-          :x="X0"
-          :y="Y0 + expenses_0 * scale"
-          :width="WIDTH"
-          :height="(HEIGHT - expenses_0) * scale"
-        />
+        <template v-if="HEIGHT > expenses_0">
+          <rect
+            class="income"
+            :x="X0"
+            :y="Y0 + expenses_0 * scale"
+            :width="WIDTH"
+            :height="(HEIGHT - expenses_0) * scale"
+          />
+          <g
+            class="corner bottom-left"
+            :transform="`translate(${X0},${Y0 + HEIGHT * scale - 10})`"
+          >
+            <path d="M0,0V10H10A10,10,0,0,1,0,0Z" />
+          </g>
+        </template>
+        <g class="corner top-left" :transform="`translate(${X0},${Y0})`">
+          <path d="M10,0H0V10A10,10,0,0,1,10,0Z" />
+        </g>
       </g>
-      <g>
+      <g v-if="inputData.total_revenue > inputData.total_revenue_y1">
         <rect
           class="cogs"
           :x="X0 + WIDTH"
@@ -40,14 +50,29 @@
           :width="WIDTH * w_delta"
           :height="h_sga_delta * scale"
         />
-        <rect
-          v-if="HEIGHT > expenses_delta"
-          class="income"
-          :x="X0 + WIDTH"
-          :y="Y0 + expenses_delta * scale"
-          :width="WIDTH * w_delta"
-          :height="(HEIGHT - expenses_delta) * scale"
-        />
+        <template v-if="HEIGHT > expenses_delta">
+          <rect
+            class="income"
+            :x="X0 + WIDTH"
+            :y="Y0 + expenses_delta * scale"
+            :width="WIDTH * w_delta"
+            :height="(HEIGHT - expenses_delta) * scale"
+          />
+          <g
+            class="corner bottom-right"
+            :transform="`translate(${X0 + WIDTH + WIDTH * w_delta - 10},${
+              Y0 + HEIGHT * scale - 10
+            })`"
+          >
+            <path d="M0,10H10V0A10,10,0,0,1,0,10Z" />
+          </g>
+        </template>
+        <g
+          class="corner top-right"
+          :transform="`translate(${X0 + WIDTH + WIDTH * w_delta - 10},${Y0})`"
+        >
+          <path d="M0,0A10,10,0,0,1,10,10V0Z" />
+        </g>
       </g>
     </svg>
     <table data-table>
@@ -118,10 +143,10 @@ export default {
       return `${year} Q${str.slice(-1)}`;
     },
     X0() {
-      return 0;
+      return 5;
     },
     Y0() {
-      return 0;
+      return 5;
     },
     WIDTH() {
       return 400;
@@ -218,6 +243,10 @@ rect {
 
 .cogs {
   fill: var(--cogs);
+}
+
+.corner {
+  fill: white;
 }
 
 [data-table] {
