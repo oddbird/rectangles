@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="chart-container">
     <svg id="chart" width="100%" height="625px">
       <g>
         <rect
@@ -179,6 +179,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.chart-container {
+  display: grid;
+  margin: 0 3rem;
+}
 rect {
   stroke: white;
   stroke-width: 2px;
@@ -200,7 +204,7 @@ rect {
   border-collapse: collapse;
   box-shadow: 3px 5px 3px #0000006c;
   color: #00000099;
-  /* font-family: 'Roboto', sans-serif; */
+  width: 50%;
 
   th {
     font-weight: bold;
