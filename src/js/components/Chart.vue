@@ -181,7 +181,6 @@ export default {
 <style lang="scss" scoped>
 .chart-container {
   display: grid;
-  margin: 0 3rem;
 }
 rect {
   stroke: var(--rect-stroke);
