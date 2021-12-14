@@ -42,7 +42,7 @@
         />
       </g>
     </svg>
-    <table>
+    <table data-table>
       <colgroup>
         <col data-col="type" />
         <col data-col="base" />
@@ -58,18 +58,30 @@
       <tbody>
         <tr>
           <td>Cost of Goods</td>
-          <td>{{ formatUSD(inputData.total_cost_of_revenue_y1) }}</td>
-          <td>{{ formatUSD(inputData.total_cost_of_revenue) }}</td>
+          <td data-cell="numeric">
+            {{ formatUSD(inputData.total_cost_of_revenue_y1) }}
+          </td>
+          <td data-cell="numeric">
+            {{ formatUSD(inputData.total_cost_of_revenue) }}
+          </td>
         </tr>
         <tr>
           <td>Operating Costs</td>
-          <td>{{ formatUSD(inputData.total_operating_expenses_y1) }}</td>
-          <td>{{ formatUSD(inputData.total_operating_expenses) }}</td>
+          <td data-cell="numeric">
+            {{ formatUSD(inputData.total_operating_expenses_y1) }}
+          </td>
+          <td data-cell="numeric">
+            {{ formatUSD(inputData.total_operating_expenses) }}
+          </td>
         </tr>
         <tr>
           <td>Operating Income</td>
-          <td>{{ formatUSD(inputData.operating_income_loss_y1) }}</td>
-          <td>{{ formatUSD(inputData.operating_income_loss) }}</td>
+          <td data-cell="numeric">
+            {{ formatUSD(inputData.operating_income_loss_y1) }}
+          </td>
+          <td data-cell="numeric">
+            {{ formatUSD(inputData.operating_income_loss) }}
+          </td>
         </tr>
       </tbody>
     </table>
@@ -77,10 +89,10 @@
 </template>
 
 <script>
-import { formatCurrency } from "@/js/utils";
+import { formatCurrency } from '@/js/utils';
 
 export default {
-  name: "Chart",
+  name: 'Chart',
   props: {
     inputData: {
       type: Object,
@@ -177,10 +189,44 @@ rect {
 }
 
 .sga {
-  fill: #CF4747;
+  fill: #cf4747;
 }
 
 .cogs {
-  fill: #8B0020;
+  fill: #8b0020;
+}
+
+[data-table] {
+  border-collapse: collapse;
+  box-shadow: 3px 5px 3px #0000006c;
+  color: #00000099;
+  /* font-family: 'Roboto', sans-serif; */
+
+  th {
+    font-weight: bold;
+    text-align: right;
+  }
+
+  th,
+  td {
+    border-bottom: thin solid lightgray;
+    padding: 1rem 0 1rem 1rem;
+  }
+  td:last-of-type,
+  th:last-of-type {
+    padding-right: 1rem;
+  }
+}
+thead {
+  background: #fafafa;
+  font-size: 1.25rem;
+  opacity: 1;
+}
+tbody {
+  font-size: 1rem;
+}
+
+[data-cell='numeric'] {
+  text-align: right;
 }
 </style>

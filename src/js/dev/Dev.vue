@@ -1,6 +1,6 @@
 <template>
   <div id="dev-app">
-    <form>
+    <form data-form>
       <label for="sample-data">Select Ticker</label>
       <select id="sample-data" v-model="selectedTicker">
         <option value="">---</option>
@@ -14,21 +14,21 @@
 </template>
 
 <script>
-import { groupBy, last } from "lodash";
-import App from "@/js/App";
-import sampleData from "./examples/rect_sample.json";
+import { groupBy, last } from 'lodash';
+import App from '@/js/App';
+import sampleData from './examples/rect_sample.json';
 
-const examples = groupBy(sampleData, "ticker");
+const examples = groupBy(sampleData, 'ticker');
 
 export default {
-  name: "DevApp",
+  name: 'DevApp',
   components: {
     App,
   },
   data() {
     return {
       examples,
-      selectedTicker: "",
+      selectedTicker: '',
       selectedData: null,
     };
   },
@@ -39,3 +39,9 @@ export default {
   },
 };
 </script>
+
+<style lang="scss" scoped>
+[data-form] label {
+  margin-right: 0.5rem;
+}
+</style>

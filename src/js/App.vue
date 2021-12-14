@@ -6,10 +6,10 @@
 </template>
 
 <script>
-import Chart from "@/js/components/Chart";
+import Chart from '@/js/components/Chart';
 
 export default {
-  name: "App",
+  name: 'App',
   components: {
     Chart,
   },
@@ -23,7 +23,5 @@ export default {
 </script>
 
 <style lang="scss">
-#app {
-  @import "../sass/app";
-}
+@use '../sass/app';
 </style>
