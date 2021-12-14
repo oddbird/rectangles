@@ -89,10 +89,10 @@
 </template>
 
 <script>
-import { formatCurrency } from "@/js/utils";
+import { formatCurrency } from '@/js/utils';
 
 export default {
-  name: "Chart",
+  name: 'Chart',
   props: {
     inputData: {
       type: Object,
