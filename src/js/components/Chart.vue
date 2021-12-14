@@ -184,26 +184,26 @@ export default {
   margin: 0 3rem;
 }
 rect {
-  stroke: white;
+  stroke: var(--rect-stroke);
   stroke-width: 2px;
 }
 
 .income {
-  fill: #358639;
+  fill: var(--income);
 }
 
 .sga {
-  fill: #cf4747;
+  fill: var(--sga);
 }
 
 .cogs {
-  fill: #8b0020;
+  fill: var(--cogs);
 }
 
 [data-table] {
   border-collapse: collapse;
   box-shadow: 3px 5px 3px #0000006c;
-  color: #00000099;
+  color: var(--text);
   width: 50%;
 
   th {
@@ -213,7 +213,7 @@ rect {
 
   th,
   td {
-    border-bottom: thin solid lightgray;
+    border-bottom: thin solid var(--border-color);
     padding: 1rem 0 1rem 1rem;
   }
   td:last-of-type,
@@ -222,7 +222,7 @@ rect {
   }
 }
 thead {
-  background: #fafafa;
+  background: var(--table-background-color);
   font-size: 1.25rem;
   opacity: 1;
 }
