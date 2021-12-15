@@ -1,6 +1,10 @@
 <template>
   <div class="chart-container">
-    <svg id="chart" width="100%" height="310px">
+    <span class="revenue-label">Total <strong> Revenue</strong></span>
+    <svg class="revenue-line">
+      <line x1="20" y1="20" x2="20" y2="130"></line>
+    </svg>
+    <svg id="chart" data-chart width="100%" height="310px">
       <g>
         <rect
           class="cogs"
@@ -226,6 +230,28 @@ export default {
 <style lang="scss" scoped>
 .chart-container {
   display: grid;
+  grid-gap: 1rem;
+  grid-template-columns: min-content 5px auto;
+}
+
+.revenue-label {
+  align-self: start;
+  grid-column: 1;
+  margin-top: 1em;
+  writing-mode: sideways-lr;
+}
+
+.revenue-line {
+  grid-column: 2;
+}
+
+line {
+  stroke: #555555;
+  stroke-width: 2px;
+}
+
+[data-chart] {
+  grid-column: 3;
 }
 
 rect {
@@ -254,6 +280,7 @@ rect {
   box-shadow: 3px 5px 3px #0000006c;
   color: var(--text);
   font-family: inherit;
+  grid-column: 3;
   width: max-content;
 
   th {
