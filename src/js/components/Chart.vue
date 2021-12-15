@@ -2,7 +2,7 @@
   <div class="chart-container">
     <span class="revenue-label">Total <strong> Revenue</strong></span>
     <svg class="revenue-line">
-      <line x1="20" y1="20" x2="20" y2="130"></line>
+      <line y1="10" y2="100%" x2="0" x1="0"></line>
     </svg>
     <svg id="chart" data-chart width="100%" height="310px">
       <g>
@@ -230,15 +230,15 @@ export default {
 <style lang="scss" scoped>
 .chart-container {
   display: grid;
-  grid-gap: 1rem;
-  grid-template-columns: min-content 5px auto;
+  gap: 0.5rem;
+  grid-template-columns: min-content 2px auto;
   margin: 2rem 1rem;
 }
 
 .revenue-label {
   align-self: start;
   grid-column: 1;
-  margin-top: 1em;
+  margin-top: 0.5em;
   writing-mode: sideways-lr;
 }
 
