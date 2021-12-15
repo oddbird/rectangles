@@ -283,7 +283,8 @@ rect {
   color: var(--text);
   font-family: inherit;
   grid-column: 3;
-  width: max-content;
+  max-width: 30rem;
+  width: 100%;
 
   th {
     font-size: 0.75rem;
@@ -293,11 +294,7 @@ rect {
   th,
   td {
     border-bottom: thin solid var(--border-color);
-    padding: 1rem 0 1rem 1rem;
-  }
-  td:last-of-type,
-  th:last-of-type {
-    padding-right: 1rem;
+    padding: 1rem;
   }
 }
 
