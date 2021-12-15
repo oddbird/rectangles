@@ -247,8 +247,8 @@ export default {
 }
 
 line {
-  stroke: #555555;
-  stroke-width: 2px;
+  stroke: var(--text);
+  stroke-width: 3px;
 }
 
 [data-chart] {
