@@ -23,5 +23,17 @@ export default {
 </script>
 
 <style lang="scss">
-@use '../sass/app';
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+#app {
+  @import '../sass/app';
+  --rect-stroke: #ffffff;
+  --income: #358639;
+  --sga: #cf4747;
+  --cogs: #8b0020;
+  --text: #00000099;
+  --border-color: #e4e4e4;
+  --table-background-color: #fafafa;
+  font-family: 'Roboto', sans-serif;
+}
 </style>

@@ -253,9 +253,11 @@ rect {
   border-collapse: collapse;
   box-shadow: 3px 5px 3px #0000006c;
   color: var(--text);
-  width: 50%;
+  font-family: inherit;
+  width: max-content;
 
   th {
+    font-size: 0.75rem;
     font-weight: bold;
     text-align: right;
   }
@@ -273,12 +275,11 @@ rect {
 
 thead {
   background: var(--table-background-color);
-  font-size: 1.25rem;
   opacity: 1;
 }
 
 tbody {
-  font-size: 1rem;
+  font-size: 0.875rem;
 }
 
 [data-cell='numeric'] {
