@@ -53,9 +53,9 @@ export default {
 <style lang="scss" scoped>
 [data-form] {
   font-family: 'Roboto', sans-serif;
-}
 
-[data-form] label {
-  margin-right: 0.5rem;
+  label {
+    margin-right: 0.5rem;
+  }
 }
 </style>

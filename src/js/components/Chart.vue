@@ -1,8 +1,8 @@
 <template>
   <div class="chart-container">
-    <span class="revenue-label">Total <strong> Revenue</strong></span>
-    <svg class="revenue-line">
-      <line y1="10" y2="100%" x2="0" x1="0"></line>
+    <span class="revenue-label">Total <strong>Revenue</strong></span>
+    <svg class="revenue-line" width="100%" height="310px">
+      <line :y1="Y0" :y2="Y0 + HEIGHT * scale" x1="0" x2="0" />
     </svg>
     <svg id="chart" data-chart width="100%" height="310px">
       <g>
@@ -87,14 +87,14 @@
       </colgroup>
       <thead>
         <tr>
-          <th scope="col"></th>
+          <td></td>
           <th scope="col">{{ period_y1 }}</th>
           <th scope="col">{{ period }}</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td data-cell="type cogs">Cost of Goods</td>
+          <th scope="row" data-cell="type cogs">Cost of Goods</th>
           <td data-cell="numeric">
             {{ formatUSD(inputData.total_cost_of_revenue_y1) }}
           </td>
@@ -103,7 +103,7 @@
           </td>
         </tr>
         <tr>
-          <td data-cell="type sga">Operating Costs</td>
+          <th scope="row" data-cell="type sga">Operating Costs</th>
           <td data-cell="numeric">
             {{ formatUSD(inputData.total_operating_expenses_y1) }}
           </td>
@@ -112,7 +112,7 @@
           </td>
         </tr>
         <tr>
-          <td data-cell="type income">Operating Income</td>
+          <th scope="row" data-cell="type income">Operating Income</th>
           <td data-cell="numeric">
             {{ formatUSD(inputData.operating_income_loss_y1) }}
           </td>
@@ -288,7 +288,6 @@ rect {
   th {
     font-size: 0.75rem;
     font-weight: bold;
-    text-align: right;
   }
 
   th,
@@ -332,6 +331,7 @@ tbody {
   --type-color: var(--sga);
 }
 
+[scope='col'],
 [data-cell='numeric'] {
   text-align: right;
 }
