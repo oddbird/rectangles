@@ -230,15 +230,15 @@ export default {
 <style lang="scss" scoped>
 .chart-container {
   display: grid;
-  gap: 0.5rem;
+  gap: var(--shim);
   grid-template-columns: min-content 2px auto;
-  margin: 2rem 1rem;
+  margin: var(--double-gutter) var(--gutter);
 }
 
 .revenue-label {
   align-self: start;
   grid-column: 1;
-  margin-top: 0.5em;
+  margin-top: var(--shim);
   writing-mode: sideways-lr;
 }
 
@@ -273,7 +273,7 @@ rect {
 }
 
 .corner {
-  fill: white;
+  fill: #ffffff;
 }
 
 [data-table] {
@@ -294,7 +294,7 @@ rect {
   th,
   td {
     border-bottom: thin solid var(--border-color);
-    padding: 1rem;
+    padding: var(--gutter);
   }
 }
 
@@ -312,7 +312,7 @@ tbody {
   content: '';
   display: inline-block;
   height: 14px;
-  margin-right: 0.5em;
+  margin-right: var(--shim);
   width: 14px;
 }
 

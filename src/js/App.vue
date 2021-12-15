@@ -33,6 +33,9 @@ export default {
   --cogs: #8b0020;
   --text: #00000099;
   --border-color: #e4e4e4;
+  --gutter: 1rem;
+  --double-gutter: calc(var(--gutter) * 2);
+  --shim: calc(var(--gutter) / 2);
   font-family: 'Roboto', sans-serif;
 }
 </style>
