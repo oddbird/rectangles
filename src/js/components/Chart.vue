@@ -94,7 +94,7 @@
       </thead>
       <tbody>
         <tr>
-          <td>Cost of Goods</td>
+          <td data-cell="type cogs">Cost of Goods</td>
           <td data-cell="numeric">
             {{ formatUSD(inputData.total_cost_of_revenue_y1) }}
           </td>
@@ -103,7 +103,7 @@
           </td>
         </tr>
         <tr>
-          <td>Operating Costs</td>
+          <td data-cell="type sga">Operating Costs</td>
           <td data-cell="numeric">
             {{ formatUSD(inputData.total_operating_expenses_y1) }}
           </td>
@@ -112,7 +112,7 @@
           </td>
         </tr>
         <tr>
-          <td>Operating Income</td>
+          <td data-cell="type income">Operating Income</td>
           <td data-cell="numeric">
             {{ formatUSD(inputData.operating_income_loss_y1) }}
           </td>
@@ -232,6 +232,7 @@ export default {
   display: grid;
   grid-gap: 1rem;
   grid-template-columns: min-content 5px auto;
+  margin: 2rem 1rem;
 }
 
 .revenue-label {
@@ -277,6 +278,7 @@ rect {
 
 [data-table] {
   border-collapse: collapse;
+  border-radius: 4px;
   box-shadow: 3px 5px 3px #0000006c;
   color: var(--text);
   font-family: inherit;
@@ -307,6 +309,27 @@ thead {
 
 tbody {
   font-size: 0.875rem;
+}
+
+[data-cell~='type']::before {
+  background-color: var(--type-color);
+  border-radius: 100%;
+  content: '';
+  display: inline-block;
+  height: 14px;
+  margin-right: 0.5em;
+  width: 14px;
+}
+
+[data-cell~='cogs']::before {
+  --type-color: var(--cogs);
+}
+
+[data-cell~='income']::before {
+  --type-color: var(--income);
+}
+[data-cell~='sga']::before {
+  --type-color: var(--sga);
 }
 
 [data-cell='numeric'] {
