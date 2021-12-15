@@ -88,14 +88,14 @@
       <thead>
         <tr>
           <th scope="col"></th>
-          <th scope="col">{{ period_y1 }}</th>
-          <th scope="col">{{ period }}</th>
+          <th scope="col" data-cell="numeric">{{ period_y1 }}</th>
+          <th scope="col" data-cell="numeric">{{ period }}</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td data-cell="type cogs">Cost of Goods</td>
-          <td data-cell="numeric">
+          <th scope="row" data-cell="type cogs">Cost of Goods</th>
+          <td scope="col" data-cell="numeric">
             {{ formatUSD(inputData.total_cost_of_revenue_y1) }}
           </td>
           <td data-cell="numeric">
@@ -103,8 +103,8 @@
           </td>
         </tr>
         <tr>
-          <td data-cell="type sga">Operating Costs</td>
-          <td data-cell="numeric">
+          <th scope="row" data-cell="type sga">Operating Costs</th>
+          <td scope="col" data-cell="numeric">
             {{ formatUSD(inputData.total_operating_expenses_y1) }}
           </td>
           <td data-cell="numeric">
@@ -112,8 +112,8 @@
           </td>
         </tr>
         <tr>
-          <td data-cell="type income">Operating Income</td>
-          <td data-cell="numeric">
+          <th scope="row" data-cell="type income">Operating Income</th>
+          <td scope="col" data-cell="numeric">
             {{ formatUSD(inputData.operating_income_loss_y1) }}
           </td>
           <td data-cell="numeric">
@@ -279,7 +279,7 @@ rect {
 [data-table] {
   border-collapse: collapse;
   border-radius: 4px;
-  box-shadow: 3px 5px 3px #0000006c;
+  box-shadow: 1px 3px 6px #00000029;
   color: var(--text);
   font-family: inherit;
   grid-column: 3;
@@ -288,7 +288,6 @@ rect {
   th {
     font-size: 0.75rem;
     font-weight: bold;
-    text-align: right;
   }
 
   th,
@@ -302,13 +301,12 @@ rect {
   }
 }
 
-thead {
-  background: var(--table-background-color);
-  opacity: 1;
-}
-
 tbody {
   font-size: 0.875rem;
+}
+
+[data-cell~='type'] {
+  text-align: left;
 }
 
 [data-cell~='type']::before {

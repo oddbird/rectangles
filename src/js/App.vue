@@ -33,7 +33,6 @@ export default {
   --cogs: #8b0020;
   --text: #00000099;
   --border-color: #e4e4e4;
-  --table-background-color: #fafafa;
   font-family: 'Roboto', sans-serif;
 }
 </style>
