@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <Chart v-for="(val, idx) in inputData" :key="idx" :input-data="val" />
-    <span v-if="!inputData.length">Please select a company and period.</span>
+    <p v-if="!inputData.length">Please select a company and period.</p>
   </div>
 </template>
 
