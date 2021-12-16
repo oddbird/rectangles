@@ -3,7 +3,7 @@
     <form data-form>
       <label for="sample-data">Select Period</label>
       <div class="select-container">
-        <select id="sample-data" multiple v-model="selectedTicker">
+        <select id="sample-data" multiple size="8" v-model="selectedTicker">
           <optgroup v-for="(val, key) in groupedData" :key="key" :label="key">
             <option
               v-for="(period, idx) in val"
