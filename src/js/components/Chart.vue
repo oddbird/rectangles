@@ -237,9 +237,16 @@ export default {
 
 .revenue-label {
   align-self: start;
+  color: var(--text);
   grid-column: 1;
   margin-top: var(--shim);
   writing-mode: sideways-lr;
+
+  @supports not (writing-mode: sideways-lr) {
+    text-align: right;
+    transform: rotate(180deg);
+    writing-mode: vertical-rl;
+  }
 }
 
 .revenue-line {
