@@ -1,11 +1,20 @@
 <template>
   <div class="chart-container">
     <span class="revenue-label">Total <strong>Revenue</strong></span>
-    <svg class="revenue-line" width="100%" height="310px">
-      <line :y1="Y0" :y2="Y0 + HEIGHT * scale" x1="0" x2="0" />
-    </svg>
-    <svg id="chart" data-chart width="100%" height="310px">
+    <svg
+      id="chart"
+      data-chart
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 700 325"
+    >
       <g>
+        <line
+          class="revenue-line"
+          :y1="Y0"
+          :y2="Y0 + HEIGHT * scale"
+          x1="0"
+          x2="0"
+        />
         <rect
           class="cogs"
           :x="X0"
@@ -228,10 +237,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@use '../../sass/app';
+
 .chart-container {
   display: grid;
   gap: var(--shim);
-  grid-template-columns: min-content 2px auto;
+  grid-template-columns: min-content minmax(20rem, 50rem);
   margin: var(--double-gutter) var(--gutter);
 }
 
@@ -250,16 +261,14 @@ export default {
 }
 
 .revenue-line {
-  grid-column: 2;
-}
-
-line {
   stroke: var(--text);
   stroke-width: 3px;
 }
 
 [data-chart] {
-  grid-column: 3;
+  grid-column: 2;
+  height: auto;
+  width: 100%;
 }
 
 rect {
@@ -289,7 +298,7 @@ rect {
   box-shadow: 1px 3px 6px #00000029;
   color: var(--text);
   font-family: inherit;
-  grid-column: 3;
+  grid-column: 2;
   max-width: 30rem;
   width: 100%;
 
