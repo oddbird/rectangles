@@ -280,7 +280,7 @@ rect {
 }
 
 .corner {
-  fill: #ffffff;
+  fill: var(--background);
 }
 
 [data-table] {
@@ -323,14 +323,14 @@ tbody {
   width: 14px;
 }
 
-[data-cell~='cogs']::before {
+[data-cell~='cogs'] {
   --type-color: var(--cogs);
 }
 
-[data-cell~='income']::before {
+[data-cell~='income'] {
   --type-color: var(--income);
 }
-[data-cell~='sga']::before {
+[data-cell~='sga'] {
   --type-color: var(--sga);
 }
 
