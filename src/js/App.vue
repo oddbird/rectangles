@@ -37,15 +37,5 @@ export default {
   --double-gutter: calc(var(--gutter) * 2);
   --shim: calc(var(--gutter) / 2);
   font-family: 'Roboto', sans-serif;
-
-  *,
-  ::before,
-  ::after {
-    box-sizing: border-box;
-  }
-
-  svg {
-    overflow: hidden;
-  }
 }
 </style>
