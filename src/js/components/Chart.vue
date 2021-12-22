@@ -5,7 +5,8 @@
       id="chart"
       data-chart
       xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 700 325"
+      viewBox="0 0 1400 360"
+      preserveAspectRatio="xMinYMin"
     >
       <g>
         <line
@@ -242,7 +243,7 @@ export default {
 .chart-container {
   display: grid;
   gap: var(--shim);
-  grid-template-columns: min-content minmax(20rem, 50rem);
+  grid-template-columns: min-content 1fr;
   margin: var(--double-gutter) var(--gutter);
 }
 
