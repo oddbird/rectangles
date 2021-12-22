@@ -5,8 +5,9 @@
       id="chart"
       data-chart
       xmlns="http://www.w3.org/2000/svg"
-      preserveAspectRatio="xMinYMin meet"
-      :viewBox="`0 0 ${WIDTH + WIDTH * w_delta + 10} ${HEIGHT}`"
+      height="auto"
+      preserveAspectRatio="xMinYMin"
+      :viewBox="`0 0 ${WIDTH + WIDTH * w_delta + 10} ${HEIGHT + 10}`"
     >
       <g>
         <line
