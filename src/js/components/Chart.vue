@@ -5,8 +5,8 @@
       id="chart"
       data-chart
       xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 1400 360"
-      preserveAspectRatio="xMinYMin"
+      preserveAspectRatio="xMinYMin meet"
+      :viewBox="`0 0 ${WIDTH + WIDTH * w_delta + 10} ${HEIGHT}`"
     >
       <g>
         <line
@@ -269,6 +269,7 @@ export default {
 [data-chart] {
   grid-column: 2;
   height: auto;
+  max-height: 50vh;
   width: 100%;
 }
 
