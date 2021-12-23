@@ -1,5 +1,5 @@
 import Vue from "vue";
-import DevApp from "@/dev/Dev";
+import DevApp from "@/js/dev/Dev";
 
 Vue.config.productionTip = false;
 
