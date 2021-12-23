@@ -15,28 +15,36 @@
           </optgroup>
         </select>
       </div>
+      <label for="show-table">Show Table</label>
+      <input id="show-table" type="checkbox" v-model="showTable" />
     </form>
-    <App :key="selectedTicker.join()" :input-data="selectedData" />
+    <RectangleChart
+      v-for="(val, idx) in selectedData"
+      :key="idx"
+      :input-data="val"
+      :show-table="showTable"
+    />
   </div>
 </template>
 
 <script>
 import { compact, find, groupBy } from 'lodash';
-import App from '@/js/App';
-import sampleData from './examples/rect_sample.json';
+import RectangleChart from '@/js/RectangleChart';
+import sampleData from './rect_sample.json';
 
 const groupedData = groupBy(sampleData, 'ticker');
 
 export default {
   name: 'DevApp',
   components: {
-    App,
+    RectangleChart,
   },
   data() {
     return {
       groupedData,
       selectedTicker: [],
       selectedData: [],
+      showTable: false,
     };
   },
   watch: {
@@ -53,6 +61,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
 *,
 *::before,
 *::after {

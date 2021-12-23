@@ -2,7 +2,6 @@
   <div class="chart-container">
     <span class="revenue-label">Total <strong>Revenue</strong></span>
     <svg
-      id="chart"
       data-chart
       xmlns="http://www.w3.org/2000/svg"
       height="auto"
@@ -90,7 +89,7 @@
         </g>
       </g>
     </svg>
-    <table data-table>
+    <table v-show="showTable" data-table>
       <colgroup>
         <col data-col="type" />
         <col data-col="base" />
@@ -104,6 +103,15 @@
         </tr>
       </thead>
       <tbody>
+        <tr>
+          <th scope="row" data-cell="type">Total Revenue</th>
+          <td data-cell="numeric">
+            {{ formatUSD(inputData.total_revenue_y1) }}
+          </td>
+          <td data-cell="numeric">
+            {{ formatUSD(inputData.total_revenue) }}
+          </td>
+        </tr>
         <tr>
           <th scope="row" data-cell="type cogs">Cost of Goods</th>
           <td data-cell="numeric">
@@ -140,11 +148,15 @@
 import { formatCurrency } from '@/js/utils';
 
 export default {
-  name: 'Chart',
+  name: 'RectangleChart',
   props: {
     inputData: {
       type: Object,
       required: true,
+    },
+    showTable: {
+      type: Boolean,
+      default: true,
     },
   },
   computed: {
@@ -239,9 +251,19 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@use '../../sass/app';
-
 .chart-container {
+  --rect-stroke: #ffffff;
+  --income: #358639;
+  --sga: #cf4747;
+  --cogs: #8b0020;
+  --text: #00000099;
+  --background: #ffffff;
+  --border-color: #e4e4e4;
+  --gutter: 1rem;
+  --double-gutter: calc(var(--gutter) * 2);
+  --shim: calc(var(--gutter) / 2);
+
+  font-family: 'Roboto', sans-serif;
   display: grid;
   gap: var(--shim);
   grid-template-columns: min-content 1fr;
